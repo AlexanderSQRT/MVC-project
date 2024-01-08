@@ -6,6 +6,9 @@ require_once BASE_DIR .'/vendor/autoload.php';
 require_once BASE_DIR . '/core/Router.php';
 
 try {
+    $dotenv = \Dotenv\Dotenv::createUnsafeImmutable(BASE_DIR);
+    $dotenv->load();
+
     // TODO - include env variables
     if (!preg_match('/assets/i', $_SERVER['REQUEST_URI'])) {
         \core\Router::dispatch($_SERVER["REQUEST_URI"]);
